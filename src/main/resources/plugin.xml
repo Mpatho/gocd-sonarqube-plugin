@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<go-plugin id="sonar.quality.gate.task.plugin" version="1">
+    <about>
+        <name>Sonar Quality Gate Status Task Plugin</name>
+        <version>1.0</version>
+        <target-go-version>16.9.0</target-go-version>
+        <description>
+            Task plugin that supports configuration and execution of sonar qube quality gate status tasks in Go
+        </description>
+        <vendor>
+            <name>Mpatho Zulu</name>
+            <url>https://github.com/Mpatho</url>
+        </vendor>
+    </about>
+</go-plugin>
