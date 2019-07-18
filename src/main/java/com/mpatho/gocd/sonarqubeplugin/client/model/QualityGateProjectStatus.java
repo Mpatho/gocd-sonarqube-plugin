@@ -1,4 +1,4 @@
-package com.mpatho.sonarquiberqualitygate.client.model;
+package com.mpatho.gocd.sonarqubeplugin.client.model;
 
 public class QualityGateProjectStatus {
     private ProjectStatus projectStatus;

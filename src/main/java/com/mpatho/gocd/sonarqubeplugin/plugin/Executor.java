@@ -1,9 +1,9 @@
-package com.mpatho.sonarquiberqualitygate.plugin;
+package com.mpatho.gocd.sonarqubeplugin.plugin;
 
 import com.google.gson.GsonBuilder;
-import com.mpatho.sonarquiberqualitygate.client.Client;
-import com.mpatho.sonarquiberqualitygate.client.action.QualityGateStatusAction;
-import com.mpatho.sonarquiberqualitygate.client.interceptor.ClientFactory;
+import com.mpatho.gocd.sonarqubeplugin.client.Client;
+import com.mpatho.gocd.sonarqubeplugin.client.action.QualityGateStatusAction;
+import com.mpatho.gocd.sonarqubeplugin.client.ClientFactory;
 import com.thoughtworks.go.plugin.api.response.DefaultGoApiResponse;
 import com.thoughtworks.go.plugin.api.task.JobConsoleLogger;
 import org.apache.http.HttpResponse;

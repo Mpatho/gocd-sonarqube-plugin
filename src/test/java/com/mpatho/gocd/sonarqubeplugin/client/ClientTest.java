@@ -1,8 +1,7 @@
-package com.mpatho.sonarquiberqualitygate.client;
+package com.mpatho.gocd.sonarqubeplugin.client;
 
-import com.mpatho.sonarquiberqualitygate.client.action.Action;
+import com.mpatho.gocd.sonarqubeplugin.client.action.Action;
 import org.apache.http.HttpHost;
-import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpUriRequest;

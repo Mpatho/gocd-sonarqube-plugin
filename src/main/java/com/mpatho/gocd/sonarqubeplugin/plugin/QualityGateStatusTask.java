@@ -1,4 +1,4 @@
-package com.mpatho.sonarquiberqualitygate.plugin;
+package com.mpatho.gocd.sonarqubeplugin.plugin;
 
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.go.plugin.api.GoApplicationAccessor;

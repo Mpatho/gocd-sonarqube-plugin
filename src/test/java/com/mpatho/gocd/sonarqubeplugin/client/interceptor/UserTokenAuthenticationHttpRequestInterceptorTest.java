@@ -1,4 +1,4 @@
-package com.mpatho.sonarquiberqualitygate.client.interceptor;
+package com.mpatho.gocd.sonarqubeplugin.client.interceptor;
 
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpRequest;

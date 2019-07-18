@@ -1,4 +1,4 @@
-package com.mpatho.sonarquiberqualitygate.client;
+package com.mpatho.gocd.sonarqubeplugin.client;
 
 import java.io.IOException;
 

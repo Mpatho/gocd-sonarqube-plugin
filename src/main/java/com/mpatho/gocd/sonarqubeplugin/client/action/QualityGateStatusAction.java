@@ -1,4 +1,4 @@
-package com.mpatho.sonarquiberqualitygate.client.action;
+package com.mpatho.gocd.sonarqubeplugin.client.action;
 
 public class QualityGateStatusAction implements Action {
     private static final String ACTION = "/api/qualitygates/project_status";

@@ -1,4 +1,4 @@
-package com.mpatho.sonarquiberqualitygate.plugin;
+package com.mpatho.gocd.sonarqubeplugin.plugin;
 
 import java.util.HashMap;
 import java.util.Map;

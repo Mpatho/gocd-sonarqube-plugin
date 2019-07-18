@@ -1,4 +1,4 @@
-package com.mpatho.sonarquiberqualitygate.client.action;
+package com.mpatho.gocd.sonarqubeplugin.client.action;
 
 import org.junit.Test;
 
