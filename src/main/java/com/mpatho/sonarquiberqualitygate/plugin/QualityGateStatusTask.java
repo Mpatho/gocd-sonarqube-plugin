@@ -20,12 +20,9 @@ import java.util.Map;
 @Extension
 public class QualityGateStatusTask implements GoPlugin {
 
-    public static final String HOSTNAME = "HostName";
-    public static final String ISSUE_TYPE_FAIL = "IssueTypeFail";
+    public static final String SERVER_URI = "ServerUri";
     public static final String USER_TOKEN = "UserToken";
     public static final String PROJECT_KEY = "ProjectKey";
-    public static final String SCHEME = "Scheme";
-    public static final String PORT = "Port";
 
     @Override
     public void initializeGoApplicationAccessor(GoApplicationAccessor goApplicationAccessor) {
@@ -80,30 +77,36 @@ public class QualityGateStatusTask implements GoPlugin {
         int responseCode = DefaultGoPluginApiResponse.SUCCESS_RESPONSE_CODE;
         Map configMap = (Map) new GsonBuilder().create().fromJson(request.requestBody(), Object.class);
         HashMap errorMap = new HashMap();
-        if (!configMap.containsKey(PROJECT_KEY) || ((Map) configMap.get(PROJECT_KEY)).get("value") == null || ((String) ((Map) configMap.get(PROJECT_KEY)).get("value")).trim().isEmpty()) {
-            errorMap.put(PROJECT_KEY, "URL cannot be empty");
+        if (isEmpty(configMap, SERVER_URI)) {
+            errorMap.put(SERVER_URI, "Server URI cannot be empty");
+        }
+        if (isEmpty(configMap, USER_TOKEN)) {
+            errorMap.put(USER_TOKEN, "User token cannot be empty");
+        }
+        if (isEmpty(configMap, PROJECT_KEY)) {
+            errorMap.put(PROJECT_KEY, "Project key cannot be empty");
         }
         validationResult.put("errors", errorMap);
         return createResponse(responseCode, validationResult);
     }
 
+    private boolean isEmpty(Map configMap, String fieldName) {
+        Map field = (Map) configMap.get(fieldName);
+        return field == null || field.get("value") == null || ((String) field.get("value")).trim().isEmpty();
+    }
+
     private GoPluginApiResponse handleGetConfigRequest() {
         HashMap config = new HashMap();
-        addField(config, HOSTNAME, new HashMap(), "Hostname", "0");
-        HashMap scheme = new HashMap();
-        scheme.put("default-value", "http");
-        addField(config, SCHEME, scheme, "Scheme", "1");
-        addField(config, PORT, new HashMap(), "Port", "2");
-        addField(config, USER_TOKEN, new HashMap(), "User Token", "3");
-        addField(config, PROJECT_KEY, new HashMap(), "Project Key", "4");
-        addField(config, ISSUE_TYPE_FAIL, new HashMap(), "Issue Type Fail", "5");
+        addField(config, SERVER_URI, new HashMap(), "Server Uri", "0", true);
+        addField(config, USER_TOKEN, new HashMap(), "User Token", "1", true);
+        addField(config, PROJECT_KEY, new HashMap(), "Project Key", "2", true);
         return createResponse(DefaultGoPluginApiResponse.SUCCESS_RESPONSE_CODE, config);
     }
 
-    private void addField(HashMap config, String key, HashMap values, String name, String order) {
+    private void addField(HashMap<String, Map<String, Object>> config, String key, HashMap<String, Object> values, String name, String order, boolean required) {
         values.put("display-order", order);
         values.put("display-name", name);
-        values.put("required", true);
+        values.put("required", required);
         config.put(key, values);
     }
 

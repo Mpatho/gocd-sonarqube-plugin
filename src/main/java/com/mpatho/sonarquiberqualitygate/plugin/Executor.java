@@ -24,19 +24,18 @@ public class Executor {
     }
 
     private Result runCommand(Context context, Config config, JobConsoleLogger console) throws IOException {
-        console.printLine("Host Name : " + config.getHostname());
-        console.printLine("Host Port : " + config.getPort());
-        console.printLine("Scheme : " + config.getScheme());
-        console.printLine("User token : " + config.getUserToken());
-        Client client = ClientFactory.getClient(config.getHostname(), Integer.parseInt(config.getPort()), config.getScheme(), config.getUserToken());
+        console.printLine("Server URI : " + config.getServerUri());
+        console.printLine("Project key : " + config.getProjectKey());
+        Client client = ClientFactory.getClient(config.getServerUri(), config.getUserToken());
         HttpResponse httpResponse = client.get(new QualityGateStatusAction(config.getProjectKey()));
         switch (httpResponse.getStatusLine().getStatusCode()) {
             case HttpStatus.SC_OK:
-                return new Result(true, getStatus(httpResponse), HttpStatus.SC_OK);
+                String status = getStatus(httpResponse);
+                return new Result("OK".equals(status), status, HttpStatus.SC_OK);
             case HttpStatus.SC_BAD_REQUEST:
                 return new Result(false, "Bad request", HttpStatus.SC_BAD_REQUEST);
             default:
-                return new Result(false, getStatus(httpResponse), HttpStatus.SC_INTERNAL_SERVER_ERROR);
+                return new Result(false, "Cannot understand the Response", HttpStatus.SC_INTERNAL_SERVER_ERROR);
         }
     }
 

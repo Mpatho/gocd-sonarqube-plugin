@@ -8,11 +8,11 @@ import static org.junit.Assert.*;
 public class QualityGateStatusActionTest {
 
     @Test
-    public void getURL() {
-        QualityGateStatusAction action = new QualityGateStatusAction("com.psybergate:pg-swift-core");
+    public void getURI() {
+        QualityGateStatusAction action = new QualityGateStatusAction("com.mpatho:finance");
 
         String result = action.getURI();
 
-        assertThat(result, is("/api/qualitygates/project_status?projectKey=com.psybergate:pg-swift-core"));
+        assertThat(result, is("/api/qualitygates/project_status?projectKey=com.mpatho:finance"));
     }
 }

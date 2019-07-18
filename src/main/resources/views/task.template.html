@@ -1,16 +1,6 @@
 <div class="form_item_block">
-  <label>SonarQube Host Name</label>
-  <input type="text" ng-model="HostName" ng-required="true">
-  </input>
-</div>
-<div class="form_item_block">
-  <label>SonarQube Host Protocol</label>
-  <input type="text" ng-model="Scheme" ng-required="true">
-  </input>
-</div>
-<div class="form_item_block">
-  <label>SonarQube Host Port</label>
-  <input type="text" ng-model="Port" ng-required="true">
+  <label>SonarQube Server Uri</label>
+  <input type="text" ng-model="ServerUri" ng-required="true">
   </input>
 </div>
 <div class="form_item_block">
@@ -23,12 +13,5 @@
   </label>
   <input type="text" ng-model="ProjectKey" ng-required="true">
   </input>
-</div>
-<div class="form_item_block">
-  <label>Fail Quality Gate result:</label>
-  <select ng-model="IssueTypeFail">
-    <option value="error">Error and Missing</option>
-    <option value="warning">Warning, Error and Missing</option>
-  </select>
 </div>
 
